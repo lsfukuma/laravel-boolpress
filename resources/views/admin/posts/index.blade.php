@@ -22,8 +22,8 @@
                           <td>{{ $post->slug }}</td>
                           <td>
                               <a class="btn btn-sm btn-info" href="{{route('adminposts.show', $post['id'])}}">Details</a>
-                              <a class="btn btn-sm btn-warning" href="#">Modify</a>
-                              <a class="btn btn-sm btn-danger"href="#">Delete</a>
+                              <a class="btn btn-sm btn-warning" href="{{route('adminposts.edit', $post['id'])}}">Modify</a>
+                              <a class="btn btn-sm btn-danger"href="{{route('adminposts.edit', $post['id'])}}">Delete</a>
                           </td>
                     </tr>
                     @empty

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', 'Write a new post')
 @section('content')
     <div class="container">
         <div class="row">
@@ -14,8 +14,9 @@
                             <small> {{$message}}</small>
                         </div>
                         @enderror
-                        <label for="text">Content</label>
-                        <textarea name="content" rows="8" cols="80" value=" {{ old('content') }} "></textarea>
+                        <textarea
+                            placeholder="Start to write your post"
+                         name="content" rows="10" cols="110">{{ old('content') }}</textarea>
 
                         @error ('content')
                         <div class="text-warning">

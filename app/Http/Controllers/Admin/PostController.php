@@ -42,19 +42,26 @@ class PostController extends Controller
         return view('admin.posts.show', compact('post'));
     }
 
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        return view('admin.posts.edit', compact('post'));
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $request->validate([
+            'title'=> 'required|max:500',
+            'content'=> 'required',
+        ]);
+        $data = $request->all();
+        $post->update($data);
+        return redirect()->route('adminposts.index');
     }
 
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('adminposts.index');
     }
 }
