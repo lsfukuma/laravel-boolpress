@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-12">
             <table class="table">
-                <a href="{{route('admin.posts.create')}}" class="btn btn-md btn-success align-right m-3">Write a new post</a>
+                <a href="{{route('adminposts.create')}}" class="btn btn-md btn-success align-right m-3">Write a new post</a>
               <thead>
                     <tr>
                           <th scope="col">Date</th>
@@ -17,9 +17,9 @@
               <tbody>
                     @forelse ($posts as $post)
                     <tr>
-                          <td>{{ $post->created_at}}</th>
-                          <td>{{ $post->title}}</td>
-                          <td>{{ $post->slug}}</td>
+                          <td>{{ $post->created_at }}</th>
+                          <td>{{ $post->title }}</td>
+                          <td>{{ $post->slug }}</td>
                           <td>
                               <a class="btn btn-sm btn-info" href="{{route('adminposts.show', $post['id'])}}">Details</a>
                               <a class="btn btn-sm btn-warning" href="#">Modify</a>

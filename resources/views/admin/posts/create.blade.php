@@ -4,10 +4,10 @@
     <div class="container">
         <div class="row">
             <div class="col-10">
-                <form class="" action="{{route('admin.posts.store')}}" method="post">
+                <form action="{{route('adminposts.store')}}" method="post">
                     @csrf
                     <div class="form-group">
-                        <label for="name">Title</label>
+                        <label for="title">Title</label>
                         <input type="text" class="form-control mb-2" id="title" name="title"  placeholder="Enter title" value=" {{ old('title') }} ">
                         @error ('title')
                         <div class="text-warning">
@@ -23,6 +23,7 @@
                         </div>
                         @enderror
                     </div>
+                    <button type="submit" class="btn btn-info">Submit</button>
                 </form>
             </div>
         </div>
