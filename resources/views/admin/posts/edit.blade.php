@@ -15,15 +15,23 @@
                             <small> {{$message}}</small>
                         </div>
                         @enderror
-                        <textarea class="form-group" placeholder="Start write here your post"name="content" rows="10" cols="110"> {{ old('content', $post->content) }} </textarea>
+                        <textarea class="form-control" placeholder="Start write here your post"name="content" rows="10" cols="110"> {{ old('content', $post->content) }} </textarea>
 
                         @error ('content')
                         <div class="text-warning">
                             <small> {{$message}}</small>
                         </div>
                         @enderror
-                        <button type="submit" class="btn btn-info d-inline-block">Modify</button>
+                        <select class="form-control mb-2" name="category_id">
+                            <option value="">Select a category</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id}}"> {{ $category->name}}</option>
+                            @endforeach
+
+                        </select>
                     </div>
+                    <button type="submit" class="btn btn-info d-inline-block">Modify</button>
+
                 </form>
                 <form class="d-inline-block" action="{{route('adminposts.destroy', $post['id'])}}" method="post">
                     @csrf

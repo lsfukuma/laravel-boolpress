@@ -9,6 +9,7 @@
                         <tr>
                               <th scope="col">Date</th>
                               <th scope="col">Title</th>
+        
                         </tr>
                   </thead>
                   <tbody>
@@ -17,7 +18,7 @@
                               <td>{{ $post->created_at }}</th>
                               <td>
                                   <a href="{{route('posts.show', ['slug'=>$post->slug])}}"> {{ $post->title }} </a>
-                                  </td>
+                              </td>
 
                         </tr>
                         @empty

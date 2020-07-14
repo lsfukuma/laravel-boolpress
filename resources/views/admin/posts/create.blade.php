@@ -14,7 +14,7 @@
                             <small> {{$message}}</small>
                         </div>
                         @enderror
-                        <textarea
+                        <textarea class="form-control mb-2"
                             placeholder="Start to write your post"
                          name="content" rows="10" cols="110">{{ old('content') }}</textarea>
 
@@ -23,6 +23,14 @@
                             <small> {{$message}}</small>
                         </div>
                         @enderror
+                        <label for="category" class="mb-2">Category: </label>
+                        <select class="form-control mb-2" name="category_id">
+                            <option value="">Select a category</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id}}"> {{ $category->name}}</option>
+                            @endforeach
+                        </select>
+
                     </div>
                     <button type="submit" class="btn btn-info">Submit</button>
                 </form>

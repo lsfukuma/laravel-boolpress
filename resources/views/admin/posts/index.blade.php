@@ -11,7 +11,8 @@
                           <th scope="col">Date</th>
                           <th scope="col">Title</th>
                           <th scope="col">Slug</th>
-                          <th scope="col">Options</th>
+                          <th scope="col">Category</th>
+                          <th scope="col-2">Options</th>
                     </tr>
               </thead>
               <tbody>
@@ -21,8 +22,12 @@
                           <td>{{ $post->title }}</td>
                           <td>{{ $post->slug }}</td>
                           <td>
+                              @if ($post->category)
+                                    {{ $post->category->name }}
+                              @endif
+                          <td>
                               <a class="btn btn-sm btn-info" href="{{route('adminposts.show', $post['id'])}}">Details</a>
-                              <a class="btn btn-sm btn-warning" href="{{route('adminposts.edit', $post['id'])}}">Modify</a>
+                              <a class="btn btn-sm btn-warning" href="{{route('adminposts.edit', $post['id'])}}">Edit</a>
                               <a class="btn btn-sm btn-danger"href="{{route('adminposts.edit', $post['id'])}}">Delete</a>
                           </td>
                     </tr>
