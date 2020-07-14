@@ -55,6 +55,8 @@ class PostController extends Controller
             'content'=> 'required',
         ]);
         $data = $request->all();
+        $slug =  Str::of($data['title'])->slug('-');
+        $data['slug'] = $slug;
         $post->update($data);
         return redirect()->route('adminposts.index');
     }

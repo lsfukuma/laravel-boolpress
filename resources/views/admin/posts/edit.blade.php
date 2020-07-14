@@ -22,13 +22,13 @@
                             <small> {{$message}}</small>
                         </div>
                         @enderror
+                        <button type="submit" class="btn btn-info d-inline-block">Modify</button>
                     </div>
-                    <button type="submit" class="btn btn-info">Modify</button>
-                    <form class="d-inline-block" action="{{route('adminposts.destroy', $post['id'])}}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger" name="button">Delete</button>
-                    </form>
+                </form>
+                <form class="d-inline-block" action="{{route('adminposts.destroy', $post['id'])}}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger" name="button">Delete</button>
                 </form>
             </div>
         </div>
