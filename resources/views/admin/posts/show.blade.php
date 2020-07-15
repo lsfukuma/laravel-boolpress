@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-8">
-                <div class="text-center">
+                <div class="">
                     <h1>Post's details</h1>
                     <h3>Date of creation: </h3>
                     <p>{{ $post->created_at }}</p>
