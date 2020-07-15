@@ -25,13 +25,22 @@
                         <select class="form-control mb-2" name="category_id">
                             <option value="">Select a category</option>
                             @foreach ($categories as $category)
-                                <option value="{{ $category->id}}"
+                                <option value="{{ $category->id }}"
                                     {{$post->category->id ?? '' == $category->id ? 'selected' : '-'}}>
                                     {{ $category->name}}
                                 </option>
                             @endforeach
+                            <p>Categories:</p>
 
+
+                            @foreach ($tags as $tag)
+                                <input type="checkbox" name="categories" value="{{ $tag->id }}"> {{$tag->name}}
+                            @endforeach
+
+
+                            
                         </select>
+
                     </div>
                     <button type="submit" class="btn btn-info d-inline-block">Modify</button>
 

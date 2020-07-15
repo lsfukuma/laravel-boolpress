@@ -12,6 +12,7 @@
                           <th scope="col">Title</th>
                           <th scope="col">Slug</th>
                           <th scope="col">Category</th>
+                          <th scope="col">Tags</th>
                           <th scope="col-2">Options</th>
                     </tr>
               </thead>
@@ -25,6 +26,16 @@
                               @if ($post->category)
                                     {{ $post->category->name }}
                               @endif
+                          </td>
+                          @if ($post->tags)
+                                <td>
+                                   @foreach ($post->tags as $tag)
+                                   {{ $tag->name}}
+                                    @endforeach
+                                </td>
+                          @else
+                              <td> no tags </td>
+                          @endif
                           <td>
                               <a class="btn btn-sm btn-info" href="{{route('adminposts.show', $post['id'])}}">Details</a>
                               <a class="btn btn-sm btn-warning" href="{{route('adminposts.edit', $post['id'])}}">Edit</a>

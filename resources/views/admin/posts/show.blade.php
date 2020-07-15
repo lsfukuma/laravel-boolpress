@@ -14,6 +14,14 @@
                     <p>{{ $post->title }}</p>
                     <h3>Text: </h3>
                     <p>{{ $post->content }}</p>
+                    <h4>Categories: </h4>
+                    <p>
+                        @foreach ($post->tags as $tag)
+                            {{ $tag->name }}{{ $loop->last ? '' : ','}}
+                        @endforeach
+                    </p>
+
+
                 </div>
 
             </div>

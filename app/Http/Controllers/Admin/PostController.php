@@ -7,13 +7,14 @@ use Illuminate\Http\Request;
 use App\Post;
 use Illuminate\Support\Str;
 use App\Category;
+use App\Tag;
 
 class PostController extends Controller
 {
 
     public function index()
     {
-        $posts = Post::with('category')->get();
+        $posts = Post::with('category', 'tags')->get();
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -47,9 +48,11 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $categories = Category::all();
+        $tags = Tag::all();
         $data = [
             'post' => $post,
-            'categories'=> $categories
+            'categories'=> $categories,
+            'tags' => $tags
         ];
         return view('admin.posts.edit', $data);
     }
