@@ -32,6 +32,10 @@
                                 </option>
                             @endforeach
                         </select>
+                        <label for="">Tags (you can choose more than one):  </label>
+                        @foreach ($tags as $tag)
+                            <input type="checkbox" name="tags[]" value="{{ $tag->id }}"> {{$tag->name}}
+                        @endforeach
 
                     </div>
                     <button type="submit" class="btn btn-info">Submit</button>

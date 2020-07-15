@@ -30,20 +30,17 @@
                                     {{ $category->name}}
                                 </option>
                             @endforeach
-                            <p>Categories:</p>
-
-
-                            @foreach ($tags as $tag)
-                                <input type="checkbox" name="categories" value="{{ $tag->id }}"> {{$tag->name}}
-                            @endforeach
-
-
-                            
                         </select>
-
+                        <div class="form-group">
+                            Tags:
+                            @foreach ($tags as $tag)
+                                <input
+                                {{ in_array($tag->id, old('tags', [])) ? 'checked' : '' }}
+                                id="checkbox" type="checkbox" name="tags[]" value="{{$tag->id}}"> {{$tag->name}}
+                            @endforeach
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-info d-inline-block">Modify</button>
-
                 </form>
                 <form class="d-inline-block" action="{{route('adminposts.destroy', $post['id'])}}" method="post">
                     @csrf

@@ -14,14 +14,19 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::with('category', 'tags')->get();
+        $posts = Post::with('category', 'tags')->get(); //with serve come un filtro e possiamo passare piu di un attributo
         return view('admin.posts.index', compact('posts'));
     }
 
     public function create()
     {
         $categories = Category::all();
-        return view('admin.posts.create', compact('categories'));
+        $tags = Tag::all();
+        $data = [
+            'categories' => $categories,
+            'tags' => $tags
+        ];
+        return view('admin.posts.create', $data);
     }
 
 
@@ -37,6 +42,12 @@ class PostController extends Controller
         $newPost = new Post;
         $newPost->fill($data);
         $newPost->save();
+
+        //faccio controllo che l'utente abbia selezionato almeno un tag. altrimento da errore
+        if (!empty($data['tags'])) {
+            $newPost->tags()->sync($data['tags']);
+        }
+
         return redirect()->route('adminposts.index');
     }
 
@@ -68,6 +79,12 @@ class PostController extends Controller
         $slug =  Str::of($data['title'])->slug('-');
         $data['slug'] = $slug;
         $post->update($data);
+        //In questo caso devo prevedere che l'utente non voglia mantere la tag selezionata -- detach
+        if (empty($data['tags'])) {
+            $post->tags()->detach();
+        } else {
+            $post->tags()->sync($data['tags']);
+        }
         return redirect()->route('adminposts.index');
     }
 

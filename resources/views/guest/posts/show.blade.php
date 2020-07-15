@@ -9,6 +9,14 @@
                 <h6> <strong>Last updated:</strong> {{ $post->updated_at}}</h6>
                 <p> {{ $post->content }} </p>
                 <p> <strong>Category:</strong> {{ $post->category->name}}</p>
+                <p> <strong>Tags: </strong>
+                    @forelse ($post->tags as $tag)
+                        {{ $tag->name }}{{ $loop->last ? '' : ','}}
+                    @empty
+                         -
+                        </p>
+                    @endforelse
+                </p>
                 <small> <strong>Slug:</strong> {{$post->slug }} </small>
             </div>
 
