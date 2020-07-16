@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('title', 'Contact us')
+@section('title' , 'Contact us!')
 @section('content')
-    <h4>Contact us!</h4>
+    email teste
 
 @endsection
