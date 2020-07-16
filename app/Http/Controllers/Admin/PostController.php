@@ -74,6 +74,7 @@ class PostController extends Controller
             'categories'=> $categories,
             'tags' => $tags
         ];
+
         return view('admin.posts.edit', $data);
     }
 
@@ -87,6 +88,10 @@ class PostController extends Controller
         $data = $request->all();
         $slug =  Str::of($data['title'])->slug('-');
         $data['slug'] = $slug;
+        if ($data['img_link']) {
+            $imgLink = Storage::put('uploads', $data['img_link']);
+            $data['img_link'] = $imgLink;
+        }
         $post->update($data);
         //In questo caso devo prevedere che l'utente non voglia mantere la tag selezionata -- detach
         if (empty($data['tags'])) {

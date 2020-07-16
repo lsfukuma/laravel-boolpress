@@ -14,9 +14,8 @@
                     <h3>Title: </h3>
                     <p>{{ $post->title }}</p>
                     <h3>Image: </h3>
-                    @if ($post->img_link) {
-                        <img src="{{ asset('storage.uploads/' . $post->img_link)}}" alt=" {{$post->title}}">
-                    }
+                    @if ($post->img_link) 
+                        <img src="{{ asset('storage/' . $post->img_link)}}" alt=" {{$post->title}}">
                     @else
                         <p>No image available</p>
 
