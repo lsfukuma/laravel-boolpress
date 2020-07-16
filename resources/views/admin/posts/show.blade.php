@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title' ,'Post in details')
 
 @section('content')
     <div class="container">
@@ -12,6 +13,14 @@
                     <p>{{ $post->updated_at }}</p>
                     <h3>Title: </h3>
                     <p>{{ $post->title }}</p>
+                    <h3>Image: </h3>
+                    @if ($post->img_link) {
+                        <img src="{{ asset('storage.uploads/' . $post->img_link)}}" alt=" {{$post->title}}">
+                    }
+                    @else
+                        <p>No image available</p>
+
+                    @endif
                     <h3>Text: </h3>
                     <p>{{ $post->content }}</p>
                     <h4>Categories: </h4>

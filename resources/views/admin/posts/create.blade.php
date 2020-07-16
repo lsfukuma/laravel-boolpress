@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-10">
-                <form action="{{route('adminposts.store')}}" method="post">
+                <form action="{{route('adminposts.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="title">Title</label>
@@ -23,7 +23,8 @@
                             <small> {{$message}}</small>
                         </div>
                         @enderror
-                        <label for="category" class="mb-2">Category: </label>
+                        <input class="mb-2"type="file" name="img_link" value="img_link">
+
                         <select class="form-control mb-2" name="category_id">
                             <option value="">Select a category</option>
                             @foreach ($categories as $category)

@@ -8,13 +8,14 @@ use App\Post;
 use Illuminate\Support\Str;
 use App\Category;
 use App\Tag;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
 
     public function index()
     {
-        $posts = Post::with('category', 'tags')->get(); //with serve come un filtro e possiamo passare piu di un attributo
+        $posts = Post::with('category', 'tags')->get(); //with serve come un filtro e possiamo passare piu di un attributo. in questo caso 'tags'
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -35,10 +36,18 @@ class PostController extends Controller
         $request->validate([
             'title'=> 'required|max:500',
             'content'=> 'required',
+            'img_link' =>'image|max:1024'
         ]);
+
         $data = $request->all();
         $slug =  Str::of($data['title'])->slug('-');
         $data['slug'] = $slug;
+        //img_
+        if ($data['img_link']) {
+            $imgLink = Storage::put('uploads', $data['img_link']);
+            $data['img_link'] = $imgLink;
+        }
+
         $newPost = new Post;
         $newPost->fill($data);
         $newPost->save();
