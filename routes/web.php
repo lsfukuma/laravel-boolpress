@@ -12,7 +12,7 @@ Route::get('/posts/{slug}', 'PostController@show')->name('posts.show');
 
 //Routes per il form contact --email
 Route::get('/contact', 'HomeController@contact')->name('contact');
-Route::post('/contact', 'HomeController@sendMail')->name('contact.store');
+Route::post('/contact', 'HomeController@contactStore')->name('contact.store');
 
 //Routes con autenticazione Admin
 Route::prefix('admin')->namespace('Admin')->name('admin')->middleware('auth')->group(function(){

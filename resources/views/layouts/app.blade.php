@@ -34,10 +34,10 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('posts.index')}}">Posts</a>
+                            <a class="nav-link {{Request::route()->getName() == 'posts.index' ? 'active' : ''}}" href="{{route('posts.index')}}">Posts</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{'contact'}}">Contact us</a>
+                            <a class="nav-link {{Request::route()->getName() == 'contact' ? 'active' : ''}}" href="{{'contact'}}">Contact us</a>
                         </li>
 
                     </ul>

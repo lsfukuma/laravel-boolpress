@@ -1,6 +1,7 @@
-@extends('layouts.app')
-@section('title' , 'Contact us!')
-@section('content')
-    email teste
+<h1>Hello Admin! You received a new message from your website Boolflix</h1>
 
-@endsection
+<h2>Here are more details:</h2>
+
+<p>Name: {{$newMessage->name}} </p>
+<p>Email: {{$newMessage->email}}</p>
+<p>Message: {{$newMessage->message}}</p>

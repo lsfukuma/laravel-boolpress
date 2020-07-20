@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Mail\userMail;
+use App\Mail\MailNewContact;
 use Illuminate\Support\Facades\Mail;
+use App\Message;
 
 class HomeController extends Controller
 {
@@ -16,9 +17,16 @@ class HomeController extends Controller
         return view('contact');
     }
 
-    public function sendMail(Request $request)
+    public function contactStore(Request $request)
     {
-        Mail::to('admin@boolpress.info')->send(new userMail());
-        return redirect()->route('/posts');
+        $data = $request->all();
+        $newMessage = new Message();
+        $newMessage->fill($data);
+        $newMessage->save();
+
+        Mail::to('info@boolpress.com')->send(new MailNewContact($newMessage));
+        return redirect()->route('posts.index');
     }
+
+
 }
